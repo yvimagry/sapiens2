@@ -41,7 +41,7 @@
 
 A family of high-resolution transformers pretrained on 1 billion human images, achieving state-of-the-art performance across diverse human-centric tasks — pose estimation, body-part segmentation, surface normals, pointmaps, and human matting.
 
-## Updates
+## 📣 Updates
 
 - May 15, 2026: Sapiens2-1B human matting model is released.
 

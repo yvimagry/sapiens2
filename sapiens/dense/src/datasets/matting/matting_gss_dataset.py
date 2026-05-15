@@ -8,11 +8,16 @@ import copy
 import os
 from typing import List
 
+import cv2
 import numpy as np
 from sapiens.registry import DATASETS
-from typedio.auto import typed
 
-from .matting_base_dataset import MattingBaseDataset
+from .matting_base_dataset import (
+    MattingBaseDataset,
+    _alpha_to_float,
+    _read_image,
+    _to_uint8,
+)
 
 
 ##-----------------------------------------------------------------------
@@ -25,17 +30,15 @@ class MattingGSSDataset(MattingBaseDataset):
         Returns:
             list[dict]: All data info of dataset.
         """
-        raw_data = typed.load(self.ann_file)
-        image_paths = raw_data.split("\n")
+        with open(self.ann_file, "r", encoding="utf-8") as f:
+            image_paths = [line.strip() for line in f if line.strip()]
 
         data_list = []
+        data_root = self.data_root or ""
         for file_path in image_paths:
-            if not file_path:
-                continue
-
             data_list.append(
                 {
-                    "image_path": os.path.join(self.data_root, file_path.strip()),
+                    "image_path": os.path.join(data_root, file_path),
                 }
             )
 
@@ -50,14 +53,19 @@ class MattingGSSDataset(MattingBaseDataset):
     def get_data_info(self, idx):
         data_info = copy.deepcopy(self.data_list[idx])
 
-        img = typed.load(data_info["image_path"])  # RGBA
-        #  GSS images are 16-bit pngs, so we need to convert them to 8-bit
-        if img.dtype == np.uint16:
-            img = (img / 256).astype(np.uint8)
+        try:
+            img = _read_image(data_info["image_path"], cv2.IMREAD_UNCHANGED)
+        except Exception as e:
+            print(f"Error loading image {data_info}: {e}")
+            return None
 
-        bgr = img[..., [2, 1, 0]]  # RGB to BGR
+        if img.ndim != 3 or img.shape[-1] != 4:
+            print(f"Expected BGRA image for {data_info}, got shape {img.shape}")
+            return None
 
-        mask = img[:, :, 3].astype(np.float32) / 255.0
+        bgr = _to_uint8(img[..., :3])
+
+        mask = _alpha_to_float(img[:, :, 3])
         fgr = (bgr.astype(np.float32) * mask[..., None]).astype(np.uint8)
 
         data_info = {

@@ -19,34 +19,39 @@ def main():
     parser = ArgumentParser()
     parser.add_argument("config", help="Config file")
     parser.add_argument("checkpoint", help="Checkpoint file")
-    parser.add_argument("--input", help="Input image dir or path list file")
-    parser.add_argument("--output", default=None, help="Path to output dir")
+    parser.add_argument(
+        "--input", required=True, help="Input image dir or path list file"
+    )
+    parser.add_argument("--output", required=True, help="Path to output dir")
     parser.add_argument(
         "--save_pred", action="store_true", help="Save alpha matte as .npy"
     )
     parser.add_argument("--device", default="cuda:0", help="Device used for inference")
     args = parser.parse_args()
 
-    model = init_model(args.config, args.checkpoint, device=args.device)
     os.makedirs(args.output, exist_ok=True)
 
     # Get image list
     if os.path.isdir(args.input):
-        input_dir = args.input
-        image_names = [
-            name
-            for name in sorted(os.listdir(input_dir))
+        image_paths = [
+            os.path.join(args.input, name)
+            for name in sorted(os.listdir(args.input))
             if name.endswith((".jpg", ".png", ".jpeg"))
         ]
     else:
-        with open(args.input, "r") as f:
+        with open(args.input, "r", encoding="utf-8") as f:
             image_paths = [line.strip() for line in f if line.strip()]
-        image_names = [os.path.basename(path) for path in image_paths]
-        input_dir = os.path.dirname(image_paths[0])
 
-    for image_name in tqdm(image_names, total=len(image_names)):
-        image_path = os.path.join(input_dir, image_name)
+    if not image_paths:
+        return
+
+    model = init_model(args.config, args.checkpoint, device=args.device)
+
+    for image_path in tqdm(image_paths, total=len(image_paths)):
+        image_name = os.path.basename(image_path)
         image = cv2.imread(image_path)  ## BGR
+        if image is None:
+            raise FileNotFoundError(f"Could not read image: {image_path}")
 
         ##------------------------------------------
         data = model.pipeline(dict(img=image))  ## resize

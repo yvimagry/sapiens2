@@ -5,7 +5,9 @@ Per-pixel alpha matting for human subjects. Predicts a soft foreground mask
 
 ## Inference Guide
 
-![Sapiens2-1B matting demo](assets/sapiens2_1b_matting_demo.gif)
+<p align="center">
+  <img src="assets/sapiens2_1b_matting_demo.gif" alt="Sapiens2-1B matting demo" title="Sapiens2-1B matting demo" width="960"/>
+</p>
 
 Runs on demo set (`demo/data`, 100 frames) by default:
 
@@ -63,7 +65,7 @@ Outputs are written under `Outputs/matting/train/<MODEL>/node/<timestamp>/`.
 
 Where `mask` is either:
 - a single-channel alpha image, or
-- an RGBA image whose alpha channel is the matte (RGB channels treated as the
-  pre-multiplied foreground).
+- an RGBA image whose alpha channel is the matte and RGB channels are the
+  foreground color before alpha pre-multiplication.
 
 `MattingGSSDataset` expects a `.txt` manifest with one RGBA image path per line.
