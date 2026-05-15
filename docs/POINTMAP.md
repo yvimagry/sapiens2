@@ -41,3 +41,8 @@ Open the script and adjust:
 Outputs:
 - 3D point cloud (`.ply` files) viewable in any Open3D / MeshLab / Blender viewer
 - 2D depth visualization (`.jpg`)
+
+## Resources
+
+- Demo: [facebook/sapiens2-pointmap](https://huggingface.co/spaces/facebook/sapiens2-pointmap)
+- Models: [0.4B](https://huggingface.co/facebook/sapiens2-pointmap-0.4b), [0.8B](https://huggingface.co/facebook/sapiens2-pointmap-0.8b), [1B](https://huggingface.co/facebook/sapiens2-pointmap-1b), [5B](https://huggingface.co/facebook/sapiens2-pointmap-5b)

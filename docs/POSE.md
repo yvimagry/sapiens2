@@ -39,3 +39,9 @@ Open the script and adjust:
 - `JOBS_PER_GPU`, `GPU_IDS` — parallelism (defaults: 2 jobs/GPU on GPUs 0–7)
 
 Outputs (visualization images + per-image keypoint JSONs) are written to `$OUTPUT`.
+
+## Resources
+
+- Demo: [facebook/sapiens2-pose](https://huggingface.co/spaces/facebook/sapiens2-pose)
+- Models: [0.4B](https://huggingface.co/facebook/sapiens2-pose-0.4b), [0.8B](https://huggingface.co/facebook/sapiens2-pose-0.8b), [1B](https://huggingface.co/facebook/sapiens2-pose-1b), [5B](https://huggingface.co/facebook/sapiens2-pose-5b)
+- Detector: [facebook/detr-resnet-101-dc5](https://huggingface.co/facebook/detr-resnet-101-dc5)

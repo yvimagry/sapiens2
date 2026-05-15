@@ -48,3 +48,8 @@ Outputs:
 - Visualization images (color-coded class overlays)
 - `.npy` files with raw class probabilities and foreground masks
   (used downstream by NORMAL, ALBEDO, POINTMAP)
+
+## Resources
+
+- Demo: [facebook/sapiens2-seg](https://huggingface.co/spaces/facebook/sapiens2-seg)
+- Models: [0.4B](https://huggingface.co/facebook/sapiens2-seg-0.4b), [0.8B](https://huggingface.co/facebook/sapiens2-seg-0.8b), [1B](https://huggingface.co/facebook/sapiens2-seg-1b), [5B](https://huggingface.co/facebook/sapiens2-seg-5b)

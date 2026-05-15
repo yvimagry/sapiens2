@@ -69,3 +69,8 @@ Where `mask` is either:
   foreground color before alpha pre-multiplication.
 
 `MattingGSSDataset` expects a `.txt` manifest with one RGBA image path per line.
+
+## Resources
+
+- Demo: [facebook/sapiens2-matting](https://huggingface.co/spaces/facebook/sapiens2-matting)
+- Model: [1B](https://huggingface.co/facebook/sapiens2-matting-1b)

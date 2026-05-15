@@ -32,3 +32,8 @@ Open the script and adjust:
 
 For best results, run [body-part segmentation](SEG.md) first and pass the
 foreground mask `.npy` to filter background pixels from the visualization.
+
+## Resources
+
+- Demo: [facebook/sapiens2-normal](https://huggingface.co/spaces/facebook/sapiens2-normal)
+- Models: [0.4B](https://huggingface.co/facebook/sapiens2-normal-0.4b), [0.8B](https://huggingface.co/facebook/sapiens2-normal-0.8b), [1B](https://huggingface.co/facebook/sapiens2-normal-1b), [5B](https://huggingface.co/facebook/sapiens2-normal-5b)
