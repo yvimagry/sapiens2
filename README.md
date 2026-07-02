@@ -113,7 +113,17 @@ export SAPIENS_ROOT=$(pwd)
 ```
 
 **Install** (requires Python ≥3.12 and PyTorch ≥2.7):
+
+With **uv** (recommended — automatically selects the CUDA 12.6 PyTorch build):
 ```bash
+uv pip install -e .
+```
+
+With **pip** (specify the PyTorch index matching your CUDA driver):
+```bash
+# CUDA 12.6 (driver ≥ 525)
+pip install -e . --extra-index-url https://download.pytorch.org/whl/cu126
+# CUDA 13.0 (driver ≥ 570)
 pip install -e .
 ```
 
