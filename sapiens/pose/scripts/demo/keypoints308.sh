@@ -5,8 +5,8 @@ cd "$(dirname "$(realpath "$0")")/../.." || exit
 SAPIENS_CHECKPOINT_ROOT="${SAPIENS_CHECKPOINT_ROOT:-${HOME}/sapiens2_host}"
 
 #----------------------------set your input and output directories-------------------------
-INPUT='../../demo/data'
-OUTPUT="${HOME}/Desktop/sapiens2/pose/Outputs/vis"
+INPUT='../../test_data'
+OUTPUT="../../test_data/outputs/pose_keypoints308"
 
 #--------------------------MODEL CARD (uncomment one)---------------------------------------
 # MODEL_NAME='sapiens2_0.4b'; CHECKPOINT="${SAPIENS_CHECKPOINT_ROOT}/pose/sapiens2_0.4b_pose.safetensors"
