@@ -1,7 +1,0 @@
-../../test_data/1780568420.930083.jpeg
-../../test_data/1780568422.831642.jpeg
-../../test_data/1780568448.629528.jpeg
-../../test_data/1780568452.429026.jpeg
-../../test_data/1780568456.231244.jpeg
-../../test_data/1780568456.524245.jpeg
-../../test_data/c.jpg

@@ -30,7 +30,7 @@ KPT_THRES=0.3
 RUN_FILE='tools/vis/vis_pose.py'
 
 # Number of inference jobs per GPU and which GPUs to use
-JOBS_PER_GPU=2; GPU_IDS=(0 1 2 3 4 5 6 7)
+JOBS_PER_GPU=1; GPU_IDS=(0)
 # JOBS_PER_GPU=1; GPU_IDS=(0)
 TOTAL_JOBS=$((JOBS_PER_GPU * ${#GPU_IDS[@]}))
 
